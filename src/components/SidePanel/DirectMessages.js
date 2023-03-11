@@ -14,7 +14,7 @@ class DirectMessages extends React.Component {
         users: [],
         userRef: firebase.database().ref('users'),
         connectedRef: firebase.database().ref('.info/connected'),
-        precenceRef: firebase.database().ref('presence'),
+        presenceRef: firebase.database().ref('presence'),
         activeChannel: ''
     }
 
@@ -38,7 +38,7 @@ class DirectMessages extends React.Component {
         });
         this.state.connectedRef.on('value', snap => {
             if (snap.val() === true ) {
-                const ref = this.state.precenceRef.child(currentUserUid);
+                const ref = this.state.presenceRef.child(currentUserUid);
                 ref.set(true);
                 ref.onDisconnect().remove(err => {
                     if (err !== null) {
@@ -47,12 +47,12 @@ class DirectMessages extends React.Component {
                 })
             }
         });
-        this.state.precenceRef.on('child_added', snap => {
+        this.state.presenceRef.on('child_added', snap => {
             if (currentUserUid !== snap.key) {
                 this.addStatusToUser(snap.key);
             }
         });
-        this.state.precenceRef.on('child_removed', snap => {
+        this.state.presenceRef.on('child_removed', snap => {
             if (currentUserUid !== snap.key) {
                 this.addStatusToUser(snap.key, false);
             }
@@ -97,7 +97,7 @@ class DirectMessages extends React.Component {
             <Menu.Menu className="menu">
                 <Menu.Item>
                     <span>
-                        <Icon name="mail" /> Dirrect messages
+                        <Icon name="mail" /> Private messages
                     </span>{''}
                     ({ users.length })
                 </Menu.Item>

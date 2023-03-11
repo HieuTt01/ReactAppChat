@@ -44,7 +44,7 @@ class UserPanel extends React.Component {
                     {/* App header */}
                         <Header inverted float="left" as="h2">
                             <Icon name="home" />
-                            <Header.Content>Home 16</Header.Content>
+                            <Header.Content>Home 18</Header.Content>
                         </Header>
                     </Grid.Row>
                     {/* User dropdow */}

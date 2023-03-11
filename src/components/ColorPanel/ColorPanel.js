@@ -13,14 +13,13 @@ class ColorPanel extends React.Component {
 
     render () {
         const { modal }= this.state;
-        alert(123);
         return (
             <Sidebar 
                 as={Menu}
                 icon="labeled"
                 inverted 
                 vertical
-                visiable
+                visible
                 width="very thin"
             >
                 <Divider />
